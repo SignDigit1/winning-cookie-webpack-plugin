@@ -3,7 +3,7 @@
  * @Author: qiangfeng@wining.com.cn
  * @Date: 2019-11-21 14:07:13
  * @Last Modified by: qiangfeng@wining.com.cn
- * @Last Modified time: 2019-11-25 09:36:46
+ * @Last Modified time: 2019-12-05 16:53:36
  */
 
 const axios = require('axios')
@@ -64,7 +64,7 @@ module.exports = class WinningCookieWebpackPlugin {
   apply (compiler) {
     if (compiler.hooks) { // webpack v4+
       compiler.hooks.afterPlugins.tap('WinningCookieWebpackPlugin', async (compilation) => {
-        if (this.userInfoParams.loginURL && this.userInfoParams.userInfoURL) {
+        if (this.userInfoParams.loginURL && this.userInfoParams.userInfoURL && process.env.NODE_ENV === 'development') {
           this.getCookies().then(res => {
             if (res) {
               this.token = res.token
@@ -78,7 +78,7 @@ module.exports = class WinningCookieWebpackPlugin {
       })
       compiler.hooks.compilation.tap('WinningCookieWebpackPlugin', compilation => {
         compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync('WinningCookieWebpackPlugin', (data, callback) => {
-          if (data.outputName === 'index.html' && this.token && this.userInfo) { // 由于现在是多页面结构故只写入主页
+          if (data.outputName === 'index.html' && this.token && this.userInfo && process.env.NODE_ENV === 'development') { // 由于现在是多页面结构故只写入主页
             const file = this.renderScript(this.token, this.userInfo)
             compilation.assets['cookie.js'] = {
               source: () => file,
