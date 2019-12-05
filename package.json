@@ -1,0 +1,27 @@
+{
+  "name": "winning-cookie-webpack-plugin",
+  "version": "0.0.2",
+  "description": "write cookies for part of win6.0 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winning-finance/winning-cookie-webpack-plugin.git"
+  },
+  "keywords": [
+    "winning",
+    "webpack-plugin"
+  ],
+  "author": "qiangfeng@winning.com.cn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/winning-finance/winning-cookie-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/winning-finance/winning-cookie-webpack-plugin#readme",
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "chalk": "^3.0.0"
+  }
+}
