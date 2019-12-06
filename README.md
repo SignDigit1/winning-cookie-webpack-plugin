@@ -62,8 +62,6 @@ module.exports = {
 |extraCookies| 可选 | Object|需要写入的额外cookies对象|
 
 
-###### 注意：当传extraCookies字段时会根据其默认值进行merge操作 
-
 
 
 ### 注意事项
