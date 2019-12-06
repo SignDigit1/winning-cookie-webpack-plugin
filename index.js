@@ -3,37 +3,17 @@
  * @Author: qiangfeng@wining.com.cn
  * @Date: 2019-11-21 14:07:13
  * @Last Modified by: qiangfeng@wining.com.cn
- * @Last Modified time: 2019-12-05 16:53:36
+ * @Last Modified time: 2019-12-06 10:41:58
  */
 
 const axios = require('axios')
 const chalk = require('chalk')
-const { objectMerge } = require('./util')
 const prefix = '【WinningCookieWebpackPlugin】'
-const DEFAULT = {
-  LOGIN_URL: 'http://172.16.6.213/base/api/v1/base/user/login',
-  USERINFO_URL: 'http://172.16.6.213/base/api/v1/base/user/get_information',
-  USERNAME: 'L10044',
-  PASSWORD: '123',
-  COOKIES: {
-    'W-FLOW': 'default',
-    'W-SEQ': '1569595974015_2'
-  }
-}
 
 module.exports = class WinningCookieWebpackPlugin {
   constructor (options = {}) {
-    const params = objectMerge({
-      userInfoParams: {
-        loginURL: DEFAULT.LOGIN_URL,
-        userInfoURL: DEFAULT.USERINFO_URL,
-        username: DEFAULT.USERNAME,
-        password: DEFAULT.PASSWORD
-      },
-      extraCookies: DEFAULT.COOKIES
-    }, options)
-    this.extraCookies = params.extraCookies
-    this.userInfoParams = params.userInfoParams
+    this.extraCookies = options.extraCookies || {}
+    this.userInfoParams = options.userInfoParams || {}
     this.token = ''
     this.userInfo = {}
   }

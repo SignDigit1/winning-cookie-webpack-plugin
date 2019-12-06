@@ -28,16 +28,6 @@ vue.config.js中加入
 ```js
 const WinCookiePlugin = require('winning-cookie-webpack-plugin')
 
-// 使用默认参数
-module.exports = {
-  chainWebpack: (config) => {
-    config.when(process.env.NODE_ENV === 'development', config => {
-      config.plugin('WinCookiePlugin').use(WinCookiePlugin)
-    })
-  }
-}
-
-// 自己传入参数
 module.exports = {
   chainWebpack: (config) => {
     config.when(process.env.NODE_ENV === 'development', config => {
@@ -74,16 +64,6 @@ module.exports = {
 
 ###### 注意：当传extraCookies字段时会根据其默认值进行merge操作 
 
-
-##### 默认值：
-
-|  Param Name  |  Default |
-|--------|------|
-| userInfoParams.loginURL   | http://172.16.6.213/base/api/v1/base/user/login |
-| userInfoParams.userInfoURL |http://172.16.6.213/base/api/v1/base/user/get_information  |
-| userInfoParams.username   |L10044  |
-| userInfoParams.password|  123 |
-|extraCookies| {'W-FLOW': 'default','W-SEQ': '1569595974015_2'}|
 
 
 ### 注意事项
