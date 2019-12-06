@@ -1,6 +1,6 @@
 {
   "name": "winning-cookie-webpack-plugin",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "write cookies for part of win6.0 project",
   "main": "index.js",
   "scripts": {
