@@ -25,7 +25,7 @@ module.exports = class WinningCookieWebpackPlugin {
         const token = data.data.access_token
         const { data: userData } = await axios.post(userInfoURL, { token }, { headers: { Authorization: 'Bearer ' + token } })
         if (userData.success && userData.data) {
-          return { token: 'Bearer ' + token, userInfo: userData.data }
+          return { success: true, token: 'Bearer ' + token, userInfo: userData.data }
         }
       }
       return { success: false, error: data.message }
