@@ -27,6 +27,7 @@ module.exports = class WinningCookieWebpackPlugin {
         if (userData.success && userData.data) {
           return { success: true, token: 'Bearer ' + token, userInfo: userData.data }
         }
+        return { success: false, error: userData.message }
       }
       return { success: false, error: data.message }
     } catch (error) {
