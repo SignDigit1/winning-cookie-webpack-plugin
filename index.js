@@ -3,7 +3,7 @@
  * @Author: qiangfeng@wining.com.cn
  * @Date: 2019-11-21 14:07:13
  * @Last Modified by: qiangfeng@wining.com.cn
- * @Last Modified time: 2019-12-06 10:41:58
+ * @Last Modified time: 2020-10-21 10:35:50
  */
 
 const axios = require('axios')
@@ -64,7 +64,7 @@ module.exports = class WinningCookieWebpackPlugin {
               source: () => file,
               size: () => file.length
             }
-            data.assets.js = ['cookie.js', ...data.assets.js]
+            data.assets.js = ['/cookie.js', ...data.assets.js]
             // console.log(chalk.green(`\n${prefix}token和userinfo已写入cookie`))
           }
           callback(null, data)
