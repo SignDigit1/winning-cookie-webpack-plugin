@@ -58,13 +58,13 @@ module.exports = class WinningCookieWebpackPlugin {
       })
       compiler.hooks.compilation.tap('WinningCookieWebpackPlugin', compilation => {
         compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration.tapAsync('WinningCookieWebpackPlugin', (data, callback) => {
-          if (data.outputName === 'index.html' && this.token && this.userInfo && process.env.NODE_ENV === 'development') { // 由于现在是多页面结构故只写入主页
+          if (this.token && this.userInfo && process.env.NODE_ENV === 'development') { // 由于现在是多页面结构故只写入主页
             const file = this.renderScript(this.token, this.userInfo)
             compilation.assets['cookie.js'] = {
               source: () => file,
               size: () => file.length
             }
-            data.assets.js = [`${compiler.options.output.publicPath || ''}cookie.js`, ...data.assets.js]
+            data.assets.js = [`${data.assets.publicPath!=='auto' && data.assets.publicPath || ''}cookie.js`, ...data.assets.js]
             // console.log(chalk.green(`\n${prefix}token和userinfo已写入cookie`))
           }
           callback(null, data)
