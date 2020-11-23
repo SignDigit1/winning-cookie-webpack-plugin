@@ -64,7 +64,7 @@ module.exports = class WinningCookieWebpackPlugin {
               source: () => file,
               size: () => file.length
             }
-            data.assets.js = ['/cookie.js', ...data.assets.js]
+            data.assets.js = [`${compiler.options.output.publicPath || ''}cookie.js`, ...data.assets.js]
             // console.log(chalk.green(`\n${prefix}token和userinfo已写入cookie`))
           }
           callback(null, data)
