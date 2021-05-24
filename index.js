@@ -42,7 +42,12 @@ module.exports = class WinningCookieWebpackPlugin {
     })
     return `
     document.cookie='BEARER_TOKEN=${token};'
-    document.cookie='userInfo=${JSON.stringify(userInfo)};'
+    document.cookie='userInfo=${JSON.stringify(userInfo,function(key,value){
+      if(value && typeof value === "string"){
+        return encodeURIComponent(value)
+      }
+      return value
+    })};'
     ${cookiesStr}
     `
   }
